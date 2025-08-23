@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Add Customers</h2>
+
+<form action="" method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {{Customer_form}}
+    <input type="submit" value="ADD CUSTOMERS">
+    
+</form>
+
+<a href="/OM/customers/">
+    <button>Back</button>
+</a>
+
+{% endblock %}

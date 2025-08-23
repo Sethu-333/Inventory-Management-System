@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h3>Products</h3>
+<div class="container">
+
+<table style="margin-bottom: 50px;">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Product Code</th>
+            <th>Price</th>
+            <th>GST</th>
+            <th>Food Product</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in  all_products %}
+        <tr>
+            <td>{{data.product_name}}</td>
+            <td>{{data.product_code}}</td>
+            <td>{{data.price}}</td>
+            <td>{{data.gst}}</td>
+            <td>{{data.food_product}}</td>
+            <td>
+                {% if data.picture %}
+                <img src="{{data.picture.url}}" alt="" width="220" height="250">
+                {% else %}
+                <p>null</p>
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'product_update' data.id %}">
+                <button class="btn btn-warning">Update</button>
+                </a>
+            </td>
+            <td>
+                <a href="{% url 'product_delete' data.id %}">
+                <button class="btn btn-danger">Delete</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+    <a href="/Inventory/products/add/">
+    <button class="btn btn-secondary">Add Product</button>
+</a>
+</table>
+</div>
+ {% endblock %}

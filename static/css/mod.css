@@ -1,0 +1,18 @@
+.white-text{
+    color: rgb(174, 255, 0);
+    font-weight: bold;
+}
+
+.L{
+    width: 50px;
+    height: 50px;
+}
+
+.inp{
+    margin: 5px;
+    display: inline-block;
+}
+
+body{
+    background-color: rgb(201, 202, 191);
+}

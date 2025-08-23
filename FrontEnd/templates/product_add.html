@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>Add Products</h3>
+
+
+<div class = "container">
+    <form action="" method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        {{product_form}}
+        <br>
+        <div class="inp">
+        <input type="submit" value="ADD PRODUCT" class="btn btn-success">
+        </div>
+    </form>
+</div>
+    <a href="/Inventory/products/">
+        <button class="btn btn-primary inp">Back</button>
+    </a>
+
+
+{% endblock %}

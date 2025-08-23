@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h3>Customers</h3>
+<div class="container">
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Customer_Name</th>
+                <th>Customer_Since</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in customers %}
+            <tr>
+                <td>{{i.customer_name}}</td>
+                <td>{{i.customer_since}}</td>
+                <td>
+                    {% if i.customer_pic %}
+                    <img src="{{i.customer_pic.url}}" alt="{{i.customer_pic}}" width="90" height="100">
+                    {% else %}
+                    <p>null</p>
+                    {% endif %}
+                </td>
+                
+                <td>
+                    <a href="{% url 'update_customer' i.id %}">
+                    <button class="btn btn-warning" >Update</button>
+                </a>
+                </td>
+                <td>
+                    <a href="{% url 'delete_customer' i.id %}">
+                    <button class="btn btn-danger ">Delete</button>
+                </a>
+                </td>
+            </tr>
+            {% endfor %}
+            <a href="/OM/customers/add/">
+        <button class="btn btn-secondary">Add Customers</button></a>
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

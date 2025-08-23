@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<h3>Orders</h3>
+
+<div class="container">
+    <a href="/OM/order/add/" ><button class="btn btn-secondary" > Create Order</button></a>
+<table>
+    <thead>
+        <tr>
+            <td>Customer</td>
+            <td>Product</td>
+            <td>Order Number</td>
+            <td>Date</td>
+            <td>Quantity</td>
+            <td>Price</td>
+            <td>Total Amount</td>
+            <td>Gst</td>
+            <td>Bill Amount</td>
+        </tr>
+        <tbody>
+            {% for data in orders %}
+            <tr>
+                <td>{{data.customer_referance}}</td>
+                <td>{{data.product_referance}}</td>
+                <td>{{data.order_number}}</td>
+                <td>{{data.order_date}}</td>
+                <td>{{data.quantity}}</td>
+                <td>{{products_data.price}}</td>
+                <td>{{data.amount}}</td>
+                <td>{{data.gst_amount}}</td>
+                <td>{{data.bill_amount}}</td>
+                <td>
+                    <a href="{% url 'order_update' data.id %}" >
+                        <button class="btn btn-warning" >Update</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'order_delete' data.id %}">
+                        <button class="orderbtn btn btn-danger btn-lg" style="padding: 3px;">Delete</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </thead>
+</table>
+</div>
+
+
+{% endblock %}
